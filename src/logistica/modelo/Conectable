@@ -1,0 +1,20 @@
+package logistica.modelo;
+
+/**
+ * Define el contrato para las unidades de transporte que poseen capacidades
+ * de comunicación y transferencia de datos dentro del ecosistema inteligente.
+ */
+public interface Conectable {
+    
+    /**
+     * Establece la conexión de la unidad con el sistema central de logística.
+     * @return true si la conexión fue exitosa, false en caso contrario.
+     */
+    boolean conectarAInternet();
+
+    /**
+     * Obtiene el estado actual de la transmisión de datos.
+     * @return Cadena con el estado del enlace.
+     */
+    String obtenerEstadoConexion();
+}
