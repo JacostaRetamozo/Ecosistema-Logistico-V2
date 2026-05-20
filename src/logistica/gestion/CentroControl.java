@@ -90,21 +90,32 @@ public class CentroControl {
     }
 
     /**
-     * Implementación del Ejercicio 6. Procesa métricas de negocio de forma óptima
-     * aislando la lógica de presentación.
+     * Implementación completa del Ejercicio 6. Procesa métricas de negocio,
+     * clasificación por tipo y búsquedas avanzadas en la flota.
      */
     private static void ejecutarReportesAvanzados(GestorLogistico gestor) {
-        long conectados = gestor.obtenerVehiculosConectables().stream()
-                .map(v -> (IConectable) v)
-                .filter(c -> c.obtenerEstadoConexion().contains("Conectado"))
-                .count();
+        System.out.println("=== 1. ESTADÍSTICAS Y RESUMEN OPERATIVO ===");
+        long conectados = gestor.buscarConectablesActivos().size();
+        long total = gestor.contarVehiculos();
+        
+        System.out.printf("Total Unidades en Flota : %d%n", total);
+        System.out.printf("Unidades en Línea       : %d%n", conectados);
+        System.out.printf("Tasa de Conectividad    : %.2f%%%n", (total > 0) ? ((double) conectados / total) * 100 : 0.0);
 
-        System.out.println("=== RESUMEN OPERATIVO ===");
-        System.out.printf("Total Unidades en Flota : %d%n", gestor.contarVehiculos());
-        System.out.printf("Unidades con Telemetría Activa : %d%n", conectados);
-        System.out.printf("Tasa de Conectividad Flota      : %.2f%%%n", 
-                (gestor.contarVehiculos() > 0) ? ((double) conectados / gestor.contarVehiculos()) * 100 : 0.0);
-        System.out.println("=========================");
+        System.out.println("\n=== 2. CLASIFICACIÓN DE LA FLOTA (groupingBy) ===");
+        gestor.clasificarVehiculosPorTipo().forEach((tipo, lista) -> {
+            System.out.printf("Tipo: [%s] -> Cantidad: %d unidades%n", tipo, lista.size());
+            lista.forEach(v -> System.out.println("   > " + v));
+        });
+
+        System.out.println("\n=== 3. BÚSQUEDA AVANZADA (Unidades Críticas en Línea) ===");
+        List<Vehiculo> activos = gestor.buscarConectablesActivos();
+        if (activos.isEmpty()) {
+            System.out.println("No se detectan unidades con transmisión activa de telemetría.");
+        } else {
+            activos.forEach(v -> System.out.println("   [ALERTA] Unidad Operativa: " + v.getId()));
+        }
+        System.out.println("=======================================================================");
     }
 
     /**
