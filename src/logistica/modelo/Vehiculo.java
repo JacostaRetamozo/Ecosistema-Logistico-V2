@@ -1,38 +1,43 @@
-/*****************************
-* Clase abstracta que representa la entidad base para cualquier unidad de transporte
-* dentro del proyecto.
-* Proporciona la identidad fundamental y establece el contrato para la movilidad.
-******************************/
+package logistica.modelo;
+
+/**
+ * Clase abstracta que representa la entidad base para cualquier unidad de transporte
+ * dentro del Ecosistema Logístico Inteligente.
+ * Proporciona la identidad fundamental y establece el contrato para la movilidad.
+ * @author [José Acosta / Nicolas Olivera]
+ * @version 2.0
+ */
 public abstract class Vehiculo {
 
-    /*****************************
-     * Identificador único del vehículo. 
-     * Se declara final para proteger la identidad y evitar modificaciones accidentales
-     * durante el ciclo de vida del objeto.
-     *****************************/
-    private final int id;
+    /**
+     * Identificador único del vehículo.
+     * Se define como String para cumplir con los requerimientos de la práctica y
+     * como final para asegurar la inmutabilidad de la identidad del objeto.
+     */
+    private final String id;
 
-    /*****************************
+    /**
      * Constructor para la inicialización segura de la identidad del vehículo.
-     * @param id Identificador numérico único de la unidad.
-     *****************************/
-    public Vehiculo(int id) {
+     * @param id Identificador alfanumérico único de la unidad.
+     */
+    public Vehiculo(String id) {
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException("El ID del vehículo no puede ser nulo o vacío.");
+        }
         this.id = id;
     }
 
-    /****************************
+    /**
      * Recupera el identificador único de la unidad de transporte.
-     * Este método concreto asegura la reutilización de código para todas las subclases.
-     * @return El valor entero del id del vehículo.
-     ****************************/
-    public int getId() {
+     * @return El valor String del ID del vehículo.
+     */
+    public String getId() {
         return this.id;
     }
 
-    /*****************************
+    /**
      * Define el comportamiento de desplazamiento específico de la unidad.
-     * Al ser un método abstracto, actúa como una directiva obligatoria para que 
-     * cada subclase concreta defina su propia lógica de movimiento.
-     *****************************/
+     * Cada subclase concreta debe implementar su propia lógica de movimiento.
+     */
     public abstract void patronMovimiento();
 }
