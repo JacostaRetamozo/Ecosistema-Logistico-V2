@@ -1,0 +1,17 @@
+# Archivos compilados
+*.class
+*.jar
+*.war
+
+# Directorios de salida de IDEs
+/bin/
+/out/
+/target/
+
+# Configuraciones de IDE (IntelliJ, Eclipse, VSCode)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
