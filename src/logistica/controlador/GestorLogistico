@@ -177,4 +177,29 @@ public class GestorLogistico {
     public void ordenarPorTipo() {
         flota.sort(Comparator.comparing(v -> v.getClass().getSimpleName()));
     }
+    // =========================================================================
+    // EJERCICIO 6: MEJORA PROPUESTA (COMPLEMENTO)
+    // =========================================================================
+
+    /**
+     * CLASIFICACIÓN: Agrupa los vehículos de la flota según su tipo (clase concreta).
+     * Utiliza Collectors.groupingBy para clasificar los elementos de forma funcional.
+     * @return Un Map donde la clave es el nombre de la clase y el valor es la lista de vehículos asociados.
+     */
+    public java.util.Map<String, List<Vehiculo>> clasificarVehiculosPorTipo() {
+        return flota.stream()
+                    .collect(Collectors.groupingBy(v -> v.getClass().getSimpleName()));
+    }
+
+    /**
+     * BÚSQUEDA AVANZADA: Filtra las unidades que implementan IConectable y que 
+     * actualmente se encuentran con el estado "Conectado".
+     * @return List de vehículos conectables en línea.
+     */
+    public List<Vehiculo> buscarConectablesActivos() {
+        return flota.stream()
+                    .filter(v -> v instanceof IConectable)
+                    .filter(v -> ((IConectable) v).obtenerEstadoConexion().toLowerCase().contains("conectado"))
+                    .collect(Collectors.toList());
+    }
 }
