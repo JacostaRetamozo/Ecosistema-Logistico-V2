@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Controlador centralizado para la gestión de la flota vehicular.
  * Implementa operaciones CRUD y procesamiento avanzado de datos utilizando
  * expresiones lambda y la API Stream de Java de forma eficiente.
- * @author [José Acosta / Nicolas Olivera]
+ * @author [José Acosta]
  * @version 2.0
  */
 public class GestorLogistico {
