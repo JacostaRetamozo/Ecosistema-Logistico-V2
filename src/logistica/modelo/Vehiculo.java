@@ -4,7 +4,7 @@ package logistica.modelo;
  * Clase abstracta que representa la entidad base para cualquier unidad de transporte
  * dentro del Ecosistema Logístico Inteligente.
  * Proporciona la identidad fundamental y establece el contrato para la movilidad.
- * @author [José Acosta / Nicolas Olivera]
+ * @author [José Acosta]
  * @version 2.0
  */
 public abstract class Vehiculo {
