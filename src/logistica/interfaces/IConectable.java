@@ -3,7 +3,7 @@ package logistica.modelo;
 /**
  * Contrato para vehículos con capacidades de comunicación y transferencia de datos.
  * Es la base para el filtrado del Ejercicio 3.
- * @author [José Acosta / Nicolas Olivera]
+ * @author [José Acosta]
  * @version 2.0
  */
 public interface IConectable {
