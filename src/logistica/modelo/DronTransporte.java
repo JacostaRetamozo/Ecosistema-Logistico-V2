@@ -3,7 +3,7 @@ package logistica.modelo;
 /**
  * Representa una unidad de transporte aérea no tripulada (Drone).
  * Implementa IConectable para integrarse al monitoreo inteligente.
- * @author [José Acosta / Nicolas Olivera]
+ * @author [José Acosta]
  * @version 2.0
  */
 public class DronTransporte extends Vehiculo implements IConectable {
