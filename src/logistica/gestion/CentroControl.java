@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Clase principal del sistema que actúa como el orquestador de operaciones.
  * Ejecuta la integración de datos, pruebas CRUD, Lambdas, Streams y Reportes.
- * @author [José Acosta / Nicolas Olivera]
+ * @author [José Acosta]
  * @version 2.0
  */
 public class CentroControl {
